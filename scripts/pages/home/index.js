@@ -1,3 +1,5 @@
+//factory
+
 async function getPhotographers() {
   // Penser à remplacer par les données récupérées dans le json
   let photographers = [];
@@ -16,7 +18,7 @@ async function getPhotographers() {
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
-
+  console.log(photographersSection);
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
