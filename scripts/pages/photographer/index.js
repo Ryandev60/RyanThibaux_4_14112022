@@ -27,17 +27,17 @@ async function getPhotographers() {
    };
 }
 
-async function displayData(selectedPhotographer) {
-   const main = document.querySelector("#main");
-   const photographerModel = photographerFactory(selectedPhotographer);
+async function displayData(selectedPhotographer, selectedMedia) {
+   const header = document.querySelector("header");
+   const photographerModel = photographerFactory(selectedPhotographer, selectedMedia);
    const userCardDOM = photographerModel.getUserCardDOM();
-   main.appendChild(userCardDOM);
+   header.after(userCardDOM);
 }
 
 async function init() {
    // Récupère les datas des photographes
-   const { selectedPhotographer } = await getPhotographers();
-   displayData(selectedPhotographer);
+   const { selectedPhotographer, selectedMedia } = await getPhotographers();
+   displayData(selectedPhotographer, selectedMedia);
 }
 
 init();

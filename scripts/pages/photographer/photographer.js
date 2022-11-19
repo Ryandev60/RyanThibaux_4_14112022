@@ -1,10 +1,15 @@
-//Mettre le code JavaScript lié à la page photographer.html
+// Mettre le code JavaScript lié à la page photographer.html
 
-function photographerFactory(data) {
-   const { id, name, city, country, tagline, price, portrait } = data;
+function photographerFactory(photographerInfo, photographerMedias) {
+   const { id, name, city, country, tagline, portrait } = photographerInfo;
    const picture = `assets/photographers/PhotographersID/${portrait}`;
+   console.log(photographerInfo);
    function getUserCardDOM() {
       // Create element
+      const main = document.createElement("main");
+      main.id = "main";
+
+      // ****** Section header ****** //
       const sectionHeader = document.createElement("section");
       sectionHeader.classList.add("photograph-header");
       main.appendChild(sectionHeader);
@@ -56,7 +61,79 @@ function photographerFactory(data) {
       img.setAttribute("src", picture);
       headerRight.appendChild(img);
 
-      return sectionHeader;
+      // ******* Section medias ****** //
+
+      const sectionMedias = document.createElement("section");
+      sectionMedias.classList.add("photograph-medias");
+      sectionHeader.after(sectionMedias);
+
+      //  Sort select container
+      const sortInputContainer = document.createElement("div");
+      sortInputContainer.classList.add("sort-select-container");
+      sectionMedias.appendChild(sortInputContainer);
+
+      // Sort select label
+      const sortInputLabel = document.createElement("label");
+      sortInputLabel.classList.add("sort-select-label");
+      sortInputLabel.setAttribute("for", "sort-select");
+      sortInputLabel.innerText = "Trier par";
+      sortInputContainer.appendChild(sortInputLabel);
+
+      // Sort select
+      const sortInput = document.createElement("select");
+      sortInput.classList.add("sort-select");
+      sortInput.id = "sortSelect";
+      sortInputLabel.after(sortInput);
+
+      // Sort select option popularity
+      const optionPopularity = document.createElement("option");
+      optionPopularity.classList.add("sort-select-option");
+      optionPopularity.setAttribute("value", "popularity");
+      optionPopularity.innerText = "Popularité";
+      sortInput.appendChild(optionPopularity);
+
+      // Sort select option date
+      const optionDate = document.createElement("option");
+      optionDate.classList.add("sort-select-option");
+      optionDate.setAttribute("value", "date");
+      optionDate.innerText = "Date";
+      sortInput.appendChild(optionDate);
+
+      // Sort select option date
+      const optionTitle = document.createElement("option");
+      optionTitle.classList.add("sort-select-option");
+      optionTitle.setAttribute("value", "title");
+      optionTitle.innerText = "Titre";
+      sortInput.appendChild(optionTitle);
+
+      //Loop on cards
+
+      // Container media card
+      const mediaCardContainer = document.createElement("div");
+      mediaCardContainer.classList.add("media-card-container");
+      sectionMedias.appendChild(mediaCardContainer);
+
+      photographerMedias.forEach((media) => {
+         // Create media card
+         const mediaCard = document.createElement("div");
+         mediaCard.classList.add("media-card");
+         mediaCardContainer.appendChild(mediaCard);
+
+         // Top media card
+         const mediaCardTop = document.createElement("div");
+         mediaCardTop.classList.add("media-card-top");
+         mediaCard.appendChild(mediaCardTop);
+
+         // Images
+
+         const mediaCardImage = document.createElement("img");
+         mediaCardImage.setAttribute("src", `./assets/photographers/Mimi/${media.image}`);
+         mediaCardTop.appendChild(mediaCardImage);
+         console.log(media);
+      });
+
+      // Return main
+      return main;
    }
 
    // Return result of getUserCardDOM

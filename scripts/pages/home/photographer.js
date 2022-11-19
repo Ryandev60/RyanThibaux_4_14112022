@@ -7,36 +7,42 @@ function photographerFactory(data) {
    function getUserCardDOM() {
       // Create element
       const article = document.createElement("article");
-      const linkToPhotographers = document.createElement("a");
-      const img = document.createElement("img");
-      const h2 = document.createElement("h2");
-      const location = document.createElement("p");
-      const quote = document.createElement("p");
-      const dayPrice = document.createElement("p");
-
-      // Set content element
-      img.setAttribute("src", picture);
-      h2.textContent = name;
-      location.textContent = `${city}, ${country}`;
-      quote.textContent = tagline;
-      dayPrice.textContent = `${price}€/jour`;
-      linkToPhotographers.setAttribute("href", `photographer.html?id=${id}`);
-
-      // Set class element
       article.classList.add("photographers-card");
-      linkToPhotographers.classList.add("link");
-      img.classList.add("portrait");
-      h2.classList.add("name");
-      location.classList.add("location");
-      quote.classList.add("quote");
-      dayPrice.classList.add("day-price");
 
-      //Set element in the DOM
+      // Photoghrapher's link
+      const linkToPhotographers = document.createElement("a");
+      linkToPhotographers.classList.add("link");
+      linkToPhotographers.setAttribute("href", `photographer.html?id=${id}`);
       article.appendChild(linkToPhotographers);
+
+      // Images
+      const img = document.createElement("img");
+      img.classList.add("portrait");
+      img.setAttribute("src", picture);
       linkToPhotographers.appendChild(img);
+
+      // Name
+      const h2 = document.createElement("h2");
+      h2.classList.add("name");
+      h2.textContent = name;
       linkToPhotographers.appendChild(h2);
+
+      // Location
+      const location = document.createElement("p");
+      location.classList.add("location");
+      location.textContent = `${city}, ${country}`;
       article.appendChild(location);
+
+      // Quote
+      const quote = document.createElement("p");
+      quote.classList.add("quote");
+      quote.textContent = tagline;
       article.appendChild(quote);
+
+      // Day price
+      const dayPrice = document.createElement("p");
+      dayPrice.classList.add("day-price");
+      dayPrice.textContent = `${price}€/jour`;
       article.appendChild(dayPrice);
 
       // Return article (card)
