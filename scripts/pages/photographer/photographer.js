@@ -1,30 +1,64 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
 function photographerFactory(data) {
-  const { id, name, city, country, tagline, price, portrait } = data;
-  console.log(name + "test");
-  const picture = `assets/photographers/PhotographersID/${portrait}`;
-  console.log(data);
-  function getUserCardDOM() {
-    // Create element
-    const h1 = document.createElement("h1");
-    const location = document.createElement("p");
-    const quote = document.createElement("p");
-    const img = document.createElement("img");
-    console.log(name);
-    // Set content element
-    h1.textContent = name;
-    location.textContent = location;
-    // Set class element
-    h1.classList.add("name");
-    //Set element in the DOM
+   const { id, name, city, country, tagline, price, portrait } = data;
+   const picture = `assets/photographers/PhotographersID/${portrait}`;
+   function getUserCardDOM() {
+      // Create element
+      const sectionHeader = document.createElement("section");
+      sectionHeader.classList.add("photograph-header");
+      main.appendChild(sectionHeader);
 
-    // Return article (card)
-    // return article;
+      // *** Header's left part *** //
+      const headerLeft = document.createElement("div");
+      headerLeft.classList.add("photograph-header__left");
+      sectionHeader.appendChild(headerLeft);
 
-    return h1;
-  }
+      // Header's left content
+      const headerLeftContent = document.createElement("div");
+      headerLeftContent.classList.add("photographer-header-content__left");
+      headerLeft.appendChild(headerLeftContent);
 
-  // Return result of getUserCardDOM
-  return { getUserCardDOM };
+      // H1
+      const h1 = document.createElement("h1");
+      h1.classList.add("name");
+      h1.textContent = name;
+      headerLeftContent.appendChild(h1);
+
+      // Location
+      const location = document.createElement("p");
+      location.classList.add("location");
+      location.textContent = `${city}, ${country}`;
+      headerLeftContent.appendChild(location);
+
+      // Quote
+      const quote = document.createElement("p");
+      quote.classList.add("quote");
+      quote.textContent = tagline;
+      headerLeftContent.appendChild(quote);
+
+      // *** Header's middle part *** //
+      const headerMiddle = document.createElement("div");
+      headerMiddle.classList.add("photograph-header__middle");
+      sectionHeader.appendChild(headerMiddle);
+
+      // Contact button
+      headerMiddle.appendChild(contactButton);
+
+      // *** Header's right part *** //
+      const headerRight = document.createElement("div");
+      headerRight.classList.add("photograph-header__right");
+      sectionHeader.appendChild(headerRight);
+
+      // Image
+      const img = document.createElement("img");
+      img.classList.add("portrait");
+      img.setAttribute("src", picture);
+      headerRight.appendChild(img);
+
+      return sectionHeader;
+   }
+
+   // Return result of getUserCardDOM
+   return { getUserCardDOM };
 }
