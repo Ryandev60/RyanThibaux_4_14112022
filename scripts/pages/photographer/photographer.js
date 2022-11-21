@@ -3,7 +3,6 @@
 function photographerFactory(photographerInfo, photographerMedias) {
    const { id, name, city, country, tagline, portrait } = photographerInfo;
    const picture = `assets/photographers/PhotographersID/${portrait}`;
-   console.log(photographerInfo);
    function getUserCardDOM() {
       // Create element
       const main = document.createElement("main");
@@ -125,11 +124,25 @@ function photographerFactory(photographerInfo, photographerMedias) {
          mediaCard.appendChild(mediaCardTop);
 
          // Images
-
-         const mediaCardImage = document.createElement("img");
-         mediaCardImage.setAttribute("src", `./assets/photographers/Mimi/${media.image}`);
-         mediaCardTop.appendChild(mediaCardImage);
-         console.log(media);
+         if (!media.video) {
+            const mediaCardImage = document.createElement("img");
+            mediaCardImage.setAttribute(
+               "src",
+               `./assets/photographers/${photographerInfo.name}/${media.image}`
+            );
+            mediaCardTop.appendChild(mediaCardImage);
+         } else {
+            const mediaCardVideo = document.createElement("video");
+            mediaCardVideo.setAttribute("controls", "");
+            mediaCardTop.appendChild(mediaCardVideo);
+            const mediaCardVideoSource = document.createElement("source");
+            mediaCardVideoSource.setAttribute(
+               "src",
+               `./assets/photographers/${photographerInfo.name}/${media.video}`
+            );
+            mediaCardVideoSource.setAttribute("type", "video/mp4");
+            mediaCardVideo.appendChild(mediaCardVideoSource);
+         }
       });
 
       // Return main
