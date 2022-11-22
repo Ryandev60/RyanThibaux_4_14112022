@@ -12,25 +12,33 @@
       align-items: center;
       flex-direction: column;
 
-      .name {
-         font-size: 4rem;
-         color: #df5742;
-         font-weight: 400;
-         text-align: left;
-         padding-left: 0.25rem;
-         margin-bottom: 1rem;
-      }
+      .photographer-header-content__left {
+         display: flex;
+         justify-content: center;
+         align-items: flex-start;
+         flex-direction: column;
+         max-width: 80%;
 
-      .location {
-         font-size: 1.5rem;
-         color: #901c1c;
-         text-align: left;
-         margin-bottom: 1.25rem;
-      }
+         .name {
+            font-size: 4rem;
+            color: #df5742;
+            font-weight: 400;
+            text-align: left;
+            padding-left: 0.25rem;
+            margin-bottom: 1rem;
+         }
 
-      .quote {
-         font-size: 1.25rem;
-         color: #8a8a8a;
+         .location {
+            font-size: 1.5rem;
+            color: #901c1c;
+            text-align: left;
+            margin-bottom: 1.25rem;
+         }
+
+         .quote {
+            font-size: 1.25rem;
+            color: #8a8a8a;
+         }
       }
    }
 
@@ -102,8 +110,8 @@
          justify-content: center;
          align-items: center;
          margin-bottom: 2rem;
+         flex-direction: column;
          .media-card-top {
-            margin-bottom: 30px;
             width: 350px;
             height: 300px;
             img {
@@ -111,6 +119,24 @@
                height: 100%;
                object-fit: cover;
                border-radius: 5px;
+            }
+         }
+
+         .media-card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 350px;
+            margin-top: 10px;
+
+            .media-card-title {
+               font-size: 1.5rem;
+               color: #901c1c;
+            }
+            .fa-heart::before {
+               width: 20px;
+               height: 20px;
+               color: #901c1c;
             }
          }
       }

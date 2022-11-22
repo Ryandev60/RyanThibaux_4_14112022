@@ -143,6 +143,24 @@ function photographerFactory(photographerInfo, photographerMedias) {
             mediaCardVideoSource.setAttribute("type", "video/mp4");
             mediaCardVideo.appendChild(mediaCardVideoSource);
          }
+
+         // Bottom media card
+         const mediaCardBottom = document.createElement("div");
+         mediaCardBottom.classList.add("media-card-bottom");
+         mediaCardTop.after(mediaCardBottom);
+
+         // Txt bottom card
+         const mediaCardTitle = document.createElement("p");
+         mediaCardTitle.classList.add("media-card-title");
+         mediaCardTitle.innerText = media.title;
+         mediaCardBottom.appendChild(mediaCardTitle);
+
+         // Likes bottom card
+
+         const mediaCardLikes = document.createElement("p");
+         mediaCardLikes.classList.add("media-card-likes");
+         mediaCardLikes.innerHTML = `${media.likes} <i class="fa-solid fa-heart"></i>`;
+         mediaCardBottom.appendChild(mediaCardLikes);
       });
 
       // Return main
