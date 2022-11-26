@@ -1,20 +1,38 @@
-const mediaCard = (array, sort) => {
-   const src = `assets/photographers/`;
+import lightbox from "./lightbox.js";
 
+const mediaCard = (selectedMedias, sort) => {
+   const src = `assets/photographers/`;
    // Once the dom is loaded,
    // we apply an event listener to the input select
-   window.onload = () => {
+
+   setTimeout(() => {
+      console.log("load");
+      console.log(sortSelect);
       sortSelect.addEventListener("change", () => {
          console.log(sortSelect.value);
          console.log(document.querySelector(".photograph-medias"));
          document.querySelectorAll(".media-card").forEach((card) => {
             card.remove();
          });
-         mediaCardContainer.innerHTML += mediaCard(array, sortSelect.value);
+         mediaCardContainer.innerHTML += mediaCard(selectedMedias, sortSelect.value);
       });
-   };
 
-   return array
+      document.querySelectorAll(".media-card-top").forEach((cardTop) => {
+         cardTop.addEventListener("click", (e) => {
+            console.log(e.target.src);
+            main.innerHTML += lightbox(selectedMedias, e.target.src);
+         });
+      });
+   }, 0);
+
+   let test;
+
+   document.getElementById("sortSelect")
+      ? (test = document.getElementById("sortSelect"))
+      : (test = document.getElementById("sortSelect"));
+   console.log(test);
+
+   return selectedMedias
       .sort((a, b) => {
          if (sort === "date") {
             return new Date(a.date) - new Date(b.date);

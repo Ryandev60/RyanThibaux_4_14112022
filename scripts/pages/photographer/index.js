@@ -1,5 +1,6 @@
 import header from "./components/header.js";
 import mediaSection from "./components/mediaSection.js";
+import totalLikes from "./components/totalLikes.js";
 
 const params = new URL(document.location).searchParams;
 const selectedPhotographerId = params.get("id");
@@ -35,7 +36,10 @@ async function getPhotograperDOM() {
 // Display data in DOM
 async function displayData(selectedPhotographer, selectedMedia) {
    const main = document.querySelector("#main");
-   main.innerHTML = header(selectedPhotographer) + mediaSection(selectedMedia);
+   main.innerHTML =
+      header(selectedPhotographer) +
+      mediaSection(selectedMedia) +
+      totalLikes(selectedPhotographer, selectedMedia);
 }
 
 async function init() {

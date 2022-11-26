@@ -1,5 +1,5 @@
 const photographerCard = (data) => {
-   const { id, name, city, country, tagline, price, portrait } = data;
+   const { name, city, country, tagline, price, portrait } = data;
 
    const picture = `assets/photographers/PhotographersID/${portrait}`;
 

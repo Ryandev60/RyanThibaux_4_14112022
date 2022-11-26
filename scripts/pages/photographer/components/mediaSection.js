@@ -5,7 +5,7 @@ import mediaCard from "./mediaCard.js";
 const mediaSection = (photographerMedias) => {
    return ` <section class="photograph-medias">
           <div class="sort-select-container">
-             <label class="" for="sort-select-label">Trier par</label>
+             <label class="sort-select-label" for="sortSelect">Trier par</label>
             <select id="sortSelect" class="sort-select" name="test">
                <option value="popularity" class="sort-select-option">Popularité</option>
                <option value="date" class="sort-select-option">Date</option>
