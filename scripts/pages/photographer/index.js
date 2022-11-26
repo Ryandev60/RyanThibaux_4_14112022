@@ -1,8 +1,11 @@
+import header from "./components/header.js";
+import mediaSection from "./components/mediaSection.js";
+
 const params = new URL(document.location).searchParams;
-const transmittedId = params.get("id");
+const selectedPhotographerId = params.get("id");
 
 async function getPhotograperDOM() {
-   // Penser à remplacer par les données récupérées dans le json
+   //Data
    let selectedPhotographer;
    let selectedMedia = [];
 
@@ -11,29 +14,28 @@ async function getPhotograperDOM() {
       .then((response) => {
          // Get photographer by id
          response.photographers.forEach((photographer) => {
-            photographer.id == transmittedId ? (selectedPhotographer = photographer) : null;
+            photographer.id == selectedPhotographerId
+               ? (selectedPhotographer = photographer)
+               : null;
          });
 
          // Get media by photographerId
          response.media.forEach((media) => {
-            media.photographerId == transmittedId ? selectedMedia.push(media) : null;
+            media.photographerId == selectedPhotographerId ? selectedMedia.push(media) : null;
          });
       });
 
-   // et bien retourner le tableau photographers seulement une fois
+   // Return datas of photographer and her medias
    return {
       selectedPhotographer,
       selectedMedia,
    };
 }
 
+// Display data in DOM
 async function displayData(selectedPhotographer, selectedMedia) {
    const main = document.querySelector("#main");
-   const photographerModel = photographerHeaderFactory(selectedPhotographer, selectedMedia);
-   const headerPhotographerDOM = photographerModel.getHeaderPhotographerDOM();
-   const photographerMedia = photographerMediaFactory(selectedMedia);
-   const mediaPhotographerDom = photographerMedia.getMediaPhotographerDOM();
-   main.innerHTML = headerPhotographerDOM + mediaPhotographerDom;
+   main.innerHTML = header(selectedPhotographer) + mediaSection(selectedMedia);
 }
 
 async function init() {

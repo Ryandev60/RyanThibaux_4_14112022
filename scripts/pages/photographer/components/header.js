@@ -1,16 +1,8 @@
-// Mettre le code JavaScript lié à la page photographer.html
-
-function photographerHeaderFactory(photographerInfo, photographerMedias) {
+const header = (photographerInfo) => {
    const { id, name, city, country, tagline, portrait } = photographerInfo;
    const picture = `assets/photographers/PhotographersID/${portrait}`;
 
-   let sort = "Popularité";
-   // const sortByPopularity = a.likes - b.likes;
-   // const sortByDate = new Date(a.date) - new Date(b.date);
-   // const sortByTitle = a.title.toString().localeCompare(b.title.toString());
-
-   const getHeaderPhotographerDOM = () => {
-      return `<section class="photograph-header">
+   return `<section class="photograph-header">
          <div class="photograph-header__left">
             <div class="photographer-header-content__left">
                <h1 class="name">${name}</h1>
@@ -26,9 +18,8 @@ function photographerHeaderFactory(photographerInfo, photographerMedias) {
          <div class="photograph-header__right">
             <img class="portrait" src="${picture}" />
          </div>
-      </section>`;
-   };
+      </section>
+      `;
+};
 
-   // Return result of getHeaderPhotographerDOM
-   return { getHeaderPhotographerDOM };
-}
+export default header;

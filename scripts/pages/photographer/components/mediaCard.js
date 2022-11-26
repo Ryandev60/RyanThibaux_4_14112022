@@ -1,6 +1,8 @@
-const loopMedia = (array, sort) => {
+const mediaCard = (array, sort) => {
    const src = `assets/photographers/`;
 
+   // Once the dom is loaded,
+   // we apply an event listener to the input select
    window.onload = () => {
       sortSelect.addEventListener("change", () => {
          console.log(sortSelect.value);
@@ -8,20 +10,18 @@ const loopMedia = (array, sort) => {
          document.querySelectorAll(".media-card").forEach((card) => {
             card.remove();
          });
-         mediaCardContainer.innerHTML += loopMedia(array, sortSelect.value);
+         mediaCardContainer.innerHTML += mediaCard(array, sortSelect.value);
       });
    };
 
-   //
    return array
       .sort((a, b) => {
-         console.log(sort);
          if (sort === "date") {
             return new Date(a.date) - new Date(b.date);
          } else if (sort === "title") {
             return a.title.toString().localeCompare(b.title.toString());
          } else {
-            return a.likes - b.likes;
+            return b.likes - a.likes;
          }
       })
       .map((media) => {
@@ -43,3 +43,5 @@ const loopMedia = (array, sort) => {
       })
       .join("");
 };
+
+export default mediaCard;

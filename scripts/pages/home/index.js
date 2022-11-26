@@ -1,4 +1,4 @@
-//factory
+import photographerCard from "./components/photographerCard.js";
 
 async function getPhotographers() {
    // Penser à remplacer par les données récupérées dans le json
@@ -20,9 +20,7 @@ async function displayData(photographers) {
    const photographersSection = document.querySelector(".photographer_section");
    console.log(photographersSection);
    photographers.forEach((photographer) => {
-      const photographerModel = photographerFactory(photographer);
-      const userCardDOM = photographerModel.getUserCardDOM();
-      photographersSection.appendChild(userCardDOM);
+      photographersSection.innerHTML += photographerCard(photographer);
    });
 }
 
