@@ -1,7 +1,7 @@
 const params = new URL(document.location).searchParams;
 const transmittedId = params.get("id");
 
-async function getPhotographers() {
+async function getPhotograperDOM() {
    // Penser à remplacer par les données récupérées dans le json
    let selectedPhotographer;
    let selectedMedia = [];
@@ -28,15 +28,17 @@ async function getPhotographers() {
 }
 
 async function displayData(selectedPhotographer, selectedMedia) {
-   const header = document.querySelector("header");
-   const photographerModel = photographerFactory(selectedPhotographer, selectedMedia);
-   const userCardDOM = photographerModel.getUserCardDOM();
-   header.after(userCardDOM);
+   const main = document.querySelector("#main");
+   const photographerModel = photographerHeaderFactory(selectedPhotographer, selectedMedia);
+   const headerPhotographerDOM = photographerModel.getHeaderPhotographerDOM();
+   const photographerMedia = photographerMediaFactory(selectedMedia);
+   const mediaPhotographerDom = photographerMedia.getMediaPhotographerDOM();
+   main.innerHTML = headerPhotographerDOM + mediaPhotographerDom;
 }
 
 async function init() {
    // Récupère les datas des photographes
-   const { selectedPhotographer, selectedMedia } = await getPhotographers();
+   const { selectedPhotographer, selectedMedia } = await getPhotograperDOM();
    displayData(selectedPhotographer, selectedMedia);
 }
 
