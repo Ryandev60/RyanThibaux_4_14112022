@@ -1,6 +1,7 @@
 import header from "./components/header.js";
-import mediaSection from "./components/mediaSection.js";
+import mediaCard from "./components/mediaCard.js";
 import totalLikes from "./components/totalLikes.js";
+import displayLightbox from "../../utils/displayLightbox.js";
 
 const params = new URL(document.location).searchParams;
 const selectedPhotographerId = params.get("id");
@@ -22,7 +23,9 @@ async function getPhotograperDOM() {
 
          // Get media by photographerId
          response.media.forEach((media) => {
-            media.photographerId == selectedPhotographerId ? selectedMedia.push(media) : null;
+            media.photographerId == selectedPhotographerId
+               ? selectedMedia.push(media)
+               : null;
          });
       });
 
@@ -34,12 +37,15 @@ async function getPhotograperDOM() {
 }
 
 // Display data in DOM
-async function displayData(selectedPhotographer, selectedMedia) {
-   const main = document.querySelector("#main");
-   main.innerHTML =
-      header(selectedPhotographer) +
-      mediaSection(selectedMedia) +
-      totalLikes(selectedPhotographer, selectedMedia);
+function displayData(selectedPhotographer, selectedMedia) {
+   photographHeader.innerHTML = header(selectedPhotographer);
+   mediaCardContainer.innerHTML = mediaCard(selectedMedia, sortSelect.value);
+   totalLikesBox.innerHTML = totalLikes(selectedPhotographer, selectedMedia);
+   sortSelect.addEventListener("change", () => {
+      mediaCardContainer.innerHTML = mediaCard(selectedMedia, sortSelect.value);
+      displayLightbox(selectedMedia);
+   });
+   displayLightbox(selectedMedia);
 }
 
 async function init() {

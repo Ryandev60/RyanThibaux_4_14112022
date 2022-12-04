@@ -2,7 +2,7 @@ const header = (photographerInfo) => {
    const { id, name, city, country, tagline, portrait } = photographerInfo;
    const picture = `assets/photographers/PhotographersID/${portrait}`;
 
-   return `<section class="photograph-header">
+   return `
          <div class="photograph-header__left">
             <div class="photographer-header-content__left">
                <h1 class="name">${name}</h1>
@@ -16,9 +16,8 @@ const header = (photographerInfo) => {
             </button>
          </div>
          <div class="photograph-header__right">
-            <img class="portrait" src="${picture}" />
+            <img class="portrait" src="${picture}" alt="Portrait de ${name}"/>
          </div>
-      </section>
       `;
 };
 

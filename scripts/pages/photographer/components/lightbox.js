@@ -1,30 +1,23 @@
-const lightbox = (selectedMedias, media) => {
-   const { image, video, title } = selectedMedias;
-   console.log(media.src);
+// const lightbox = () => {
+//    closeLightbox.addEventListener("click", () => {
+//       document.getElementsByClassName("lightbox");
+//       lightboxDom.style.display = "none";
+//    });
 
-   return `
-    
-        <div class="lightbox"> 
-            <div class="lightbox--left">
-                 <i class="fa-solid fa-chevron-left"></i>
-            </div>
-            <div class="lightbox--middle">
-            <img src="${media}">
-            <p></p>
-            </div>
-            <div class="lightbox--right">
-                <i class="fa-solid fa-x"></i>
-                <i class="fa-solid fa-chevron-right"></i>
-                
-            </div>
+//    if (fileType === "image") {
+//       return `
+//     <img src="${mediaSrc}">
+//     <p>${mediaTitle}</p>
+// `;
+//    } else {
+//       return `
+//     <video controls="" title="${mediaTitle}">
+//      <source src="${mediaTitle}" type="video/mp4">
+//    </video>
+//    <p>${mediaTitle}</p>
 
-        
-        </div>
-    
-    
-    
-    
-    `;
-};
+//     `;
+//    }
+// };
 
-export default lightbox;
+// export default lightbox;

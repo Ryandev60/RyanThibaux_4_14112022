@@ -6,10 +6,10 @@ const totalLikes = (photographerInfo, photographerMedias) => {
       sumOfLikes += media.likes;
    });
 
-   return `<div class="total-likes"> 
+   return ` 
              <p class="sum-of-likes">${sumOfLikes} <i class="fa-solid fa-heart"></i></p>
              <p class="price">${price}€ / jour</p>
-          </div>`;
+          `;
 };
 
 export default totalLikes;

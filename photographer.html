@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
    <head>
       <link href="css/style.min.css" rel="stylesheet" type="text/css" />
 
@@ -20,11 +20,34 @@
    </head>
    <body>
       <header>
-         <a href="/index.html">
-            <img src="assets/images/logo.png" class="logo" />
+         <a href="/index.html" aria-label="Allez à l'acceuil">
+            <img
+               src="assets/images/logo.png"
+               class="logo"
+               alt="Logo de Fisheye"
+            />
          </a>
       </header>
-      <main id="main"></main>
+      <main id="main">
+         <section id="photographHeader" class="photograph-header"></section>
+         <section class="photograph-medias">
+            <div class="sort-select-container">
+               <label class="sort-select-label" for="sortSelect"
+                  >Trier par</label
+               >
+               <select id="sortSelect" class="sort-select" name="test">
+                  <option value="popularity" class="sort-select-option">
+                     Popularité
+                  </option>
+                  <option value="date" class="sort-select-option">Date</option>
+                  <option value="title" class="sort-select-option">
+                     Titre
+                  </option>
+               </select>
+            </div>
+            <div class="media-card-container" id="mediaCardContainer"></div>
+         </section>
+      </main>
       <div id="contact_modal">
          <div class="modal">
             <header>
@@ -40,6 +63,17 @@
             </form>
          </div>
       </div>
+      <div id="lightboxDom" class="lightbox">
+         <div class="lightbox--left">
+            <i id="beforeLightbox" class="fa-solid fa-chevron-left"></i>
+         </div>
+         <div id="lightboxData" class="lightbox--middle"></div>
+         <div class="lightbox--right">
+            <i id="closeLightbox" class="fa-solid fa-x"></i>
+            <i id="nextLightbox" class="fa-solid fa-chevron-right"></i>
+         </div>
+      </div>
+      <div id="totalLikesBox" class="total-likes"></div>
       <script src="/scripts/pages/photographer/index.js" type="module"></script>
    </body>
 </html>
