@@ -5,12 +5,12 @@ const photographerCard = (data) => {
 
    return `
    <article class="photographers-card">
-      <a class="link" href="photographer.html?id=${id}"
-         ><img class="portrait" src="${picture}" alt="Portrait de ${name}"/>
-         <h2 class="name">${name}</h2></a>
-      <p class="location">${city}, ${country}}</p>
-      <p class="quote">${tagline}</p>
-      <p class="day-price">${price}€/jour</p>
+      <a tabindex="0"  aria-label="Aller à la page du photographe" class="link" href="photographer.html?id=${id}"
+         ><img tabindex="0" class="portrait" src="${picture}" alt="Portrait de ${name}"/>
+         <h2 tabindex="0"  class="name">${name}</h2></a>
+      <p tabindex="0" lang="en" class="location">${city}, ${country}</p>
+      <blockquote tabindex="0" class="quote">${tagline}</blockquote>
+      <p tabindex="0" aria-label="${price} euros par jour" class="day-price">${price}€/jour</p>
    </article>
    `;
 };

@@ -17,24 +17,32 @@ const mediaCard = (selectedMedias, sort) => {
       })
       .map((media) => {
          return `<div class="media-card">
-           <div class="media-card-top card-number-${cardCounter++}">
+           <div class="media-card-top">
            ${
               media.image
-                 ? `<img src = ${`${src}/${media.photographerId}/${media.image}`} alt="${
+                 ? `<img tabindex="0" src = ${`${src}/${media.photographerId}/${media.image}`} alt="${
                       media.title
-                   }">`
-                 : `<video controls title="${media.title}">
+                   }" class="media card-number-${cardCounter++}">`
+                 : `<video tabindex="0" controls title="${
+                      media.title
+                   }" class="media" card-number-${cardCounter++}">
                   <source src = ${`${src}/${media.photographerId}/${media.video}`} type="video/mp4">
                  </video>`
            }
            </div>
            <div class="media-card-bottom">
-           <p class="media-card-title">${media.title}</p>
+           <p lang="en-GB" aria-label="${
+              media.title
+           }" tabindex="0" class="media-card-title">${media.title}</p>
            <div class="media-card-bottom-right">
-           <p class="media-card-likes like-number-${likeCounter++}">${
+           <p aria-label="${media.likes} j'aime pour le média ${
+            media.title
+         }" tabindex="0" class="media-card-likes like-number-${likeCounter++}">${
             media.likes
          }</p>
-         <i class="fa-solid fa-heart heart heart-number-${heartCounter++}"></i>
+         <i aria-label="Appuyer sur entrée pour indiquer que vous aimez le media ${
+            media.title
+         }" tabindex="0" class="fa-solid fa-heart heart heart-number-${heartCounter++}"></i>
          </div>
            </div>
            </div>`;

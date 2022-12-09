@@ -50,7 +50,7 @@
       </main>
       <div id="modalDom" class="modal">
          <header class="header-form">
-            <h2 id="contactMe">Contactez-moi <br /></h2>
+            <h2 tabindex="0" id="contactMe">Contactez-moi <br /></h2>
             <i id="crossModal" class="fa-solid fa-x"></i>
          </header>
          <form>
@@ -64,7 +64,9 @@
                <label for="message">Votre message</label>
                <input id="message" type="text" />
             </div>
-            <button id="sendButton" class="send-form">Envoyer</button>
+            <button type="submit" id="sendButton" class="send-form">
+               Envoyer
+            </button>
          </form>
       </div>
       <div id="lightboxDom" class="lightbox">

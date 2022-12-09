@@ -10,12 +10,12 @@ const displayLightbox = (allMedias) => {
 
          if (selectedMedia.image) {
             lightboxData.innerHTML = ` 
-           <img src="${src}/${selectedMedia.photographerId}/${selectedMedia.image}" alt ="${selectedMedia.title}"></img>
+           <img tabindex="0" src="${src}/${selectedMedia.photographerId}/${selectedMedia.image}" alt ="${selectedMedia.title}"></img>
            <p>${selectedMedia.title}</p>
         `;
          } else {
             lightboxData.innerHTML = `
-           <video controls="" title="${selectedMedia.title}">
+           <video tabindex="0" controls="" title="${selectedMedia.title}">
                  <source src="${src}/${selectedMedia.photographerId}/${selectedMedia.video}" type="video/mp4">
            </video>
            <p>${selectedMedia.title}</p>
@@ -50,30 +50,36 @@ const displayLightbox = (allMedias) => {
       lightboxDom.style.display = "none";
    };
 
+   const insertDataLightbox = (media) => {
+      numberOfMedia = Number(media.classList[1].replace("card-number-", ""));
+      selectedMedia = allMedias[numberOfMedia];
+
+      if (selectedMedia.image) {
+         lightboxData.innerHTML = ` 
+         <img src="${src}/${selectedMedia.photographerId}/${selectedMedia.image}" alt ="${selectedMedia.title}"></img>
+         <p>${selectedMedia.title}</p>
+      `;
+      } else {
+         lightboxData.innerHTML = `
+         <video controls="" title="${selectedMedia.title}">
+               <source src="${src}/${selectedMedia.photographerId}/${selectedMedia.video}" type="video/mp4">
+         </video>
+         <p>${selectedMedia.title}</p>
+         `;
+      }
+
+      lightboxDom.style.display = "flex";
+   };
+
    // addEventListener
 
-   document.querySelectorAll(".media-card-top").forEach((cardTop) => {
-      cardTop.addEventListener("click", () => {
-         numberOfMedia = Number(
-            cardTop.classList[1].replace("card-number-", "")
-         );
-         selectedMedia = allMedias[numberOfMedia];
+   document.querySelectorAll(".media").forEach((media) => {
+      media.addEventListener("click", () => {
+         insertDataLightbox(media);
+      });
 
-         if (selectedMedia.image) {
-            lightboxData.innerHTML = ` 
-            <img src="${src}/${selectedMedia.photographerId}/${selectedMedia.image}" alt ="${selectedMedia.title}"></img>
-            <p>${selectedMedia.title}</p>
-         `;
-         } else {
-            lightboxData.innerHTML = `
-            <video controls="" title="${selectedMedia.title}">
-                  <source src="${src}/${selectedMedia.photographerId}/${selectedMedia.video}" type="video/mp4">
-            </video>
-            <p>${selectedMedia.title}</p>
-            `;
-         }
-
-         lightboxDom.style.display = "flex";
+      media.addEventListener("keydown", (e) => {
+         e.key === "Enter" ? insertDataLightbox(media) : null;
       });
    });
 

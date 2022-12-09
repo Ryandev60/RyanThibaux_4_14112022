@@ -30,27 +30,7 @@ const modal = (selectedPhotographer) => {
       modalDom.style.display = "none";
    };
 
-   // Event listener
-
-   contactButton.addEventListener("click", () => {
-      displayModal();
-   });
-
-   crossModal.addEventListener("click", () => {
-      closeModal();
-   });
-
-   addEventListener("keydown", (e) => {
-      if (modalDom.style.display === "block" && e.key === "Escape") {
-         closeModal();
-      }
-   });
-
-   // Test error form
-
-   sendButton.addEventListener("click", (e) => {
-      e.preventDefault();
-
+   const testForm = () => {
       // firstName error
 
       if (!regExpLetters.test(firstName.value)) {
@@ -118,6 +98,27 @@ const modal = (selectedPhotographer) => {
          message : ${message.value}
          `);
       }
+   };
+
+   // Event listener
+
+   contactButton.addEventListener("click", () => {
+      displayModal();
+   });
+
+   crossModal.addEventListener("click", () => {
+      closeModal();
+   });
+
+   addEventListener("keydown", (e) => {
+      if (modalDom.style.display === "block" && e.key === "Escape") {
+         closeModal();
+      }
+   });
+
+   sendButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      testForm();
    });
 };
 

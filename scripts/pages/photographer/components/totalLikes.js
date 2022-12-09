@@ -1,5 +1,5 @@
 const totalLikes = (photographerInfo, photographerMedias) => {
-   const { price } = photographerInfo;
+   const { price, name } = photographerInfo;
    let sumOfLikes = 0;
 
    photographerMedias.forEach((media) => {
@@ -7,11 +7,11 @@ const totalLikes = (photographerInfo, photographerMedias) => {
    });
 
    return ` 
-   <div class="total-likes-right">
-             <p id="sumOfLikes" class="sum-of-likes">${sumOfLikes}</p>
+   <aside class="total-likes-right">
+             <p aria-label="${photographerInfo.name} à obtenu un total de ${sumOfLikes} j'aime" tabindex="0" id="sumOfLikes" class="sum-of-likes">${sumOfLikes}</p>
              <i class="fa-solid fa-heart"></i>
-    </div>    
-    <p class="price">${price}€ / jour</p>
+    </aside>    
+    <p aria-label="${price} euros par jour" tabindex="0" class="price">${price}€ / jour</p>
     `;
 };
 
