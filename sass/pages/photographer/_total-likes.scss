@@ -2,14 +2,21 @@
    position: fixed;
    bottom: 0;
    right: 40px;
-   background-color: #db8876;
+   background-color: $salmon;
    display: flex;
    flex-direction: row;
    justify-content: space-between;
-   color: #000;
+   color: $black;
    width: 377px;
    padding: 29px 20px;
    font-weight: 500;
    font-size: 24px;
    border-radius: 5px;
+   &-right {
+      display: flex;
+      align-items: center;
+      .sum-of-likes {
+         margin-right: 0.5rem;
+      }
+   }
 }

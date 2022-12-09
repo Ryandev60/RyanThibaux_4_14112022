@@ -1,5 +1,5 @@
 .photograph-header {
-   background-color: #fafafa;
+   background-color: $lightgrey;
    height: 300px;
    margin: 0 100px;
    display: grid;
@@ -21,7 +21,7 @@
 
          .name {
             font-size: 4rem;
-            color: #df5742;
+            color: $orange;
             font-weight: 400;
             text-align: left;
             padding-left: 0.25rem;
@@ -30,14 +30,14 @@
 
          .location {
             font-size: 1.5rem;
-            color: #901c1c;
+            color: $redcherry;
             text-align: left;
             margin-bottom: 1.25rem;
          }
 
          .quote {
             font-size: 1.25rem;
-            color: #8a8a8a;
+            color: $grey
          }
       }
    }
@@ -55,9 +55,16 @@
          width: 170px;
          height: 70px;
          border: none;
-         background-color: #901c1c;
+         background-color: $redcherry;
          border-radius: 5px;
          cursor: pointer;
+         transition: 0.5s;
+
+         &:hover,
+         &:focus {
+            background-color: $salmon;
+            color: $black;
+         }
       }
    }
 

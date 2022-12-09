@@ -9,14 +9,14 @@
       }
 
       .sort-select {
-         padding: 0.25rem;
-         background-color: #901c1c;
-         color: #fff;
+         padding: 1.25rem;
+         background-color: $redcherry;
+         color: $white;
          border-radius: 5px;
          font-size: 1.25rem;
 
          &:after {
-            background-color: #901c1c;
+            background-color: $redcherry;
          }
 
          .sort-select-option {
@@ -57,20 +57,53 @@
 
             .media-card-title {
                font-size: 1.5rem;
-               color: #901c1c;
+               color: $redcherry;
+               margin-top: 4px;
             }
 
-            .media-card-likes {
-               min-height: 100%;
-               min-width: 100px;
-               text-align: right;
-            }
-            .fa-heart::before {
-               width: 20px;
-               height: 20px;
-               color: #901c1c;
+            &-right {
+               display: flex;
+               align-items: center;
+               .media-card-likes {
+                  margin-top: 4px;
+                  min-height: 100%;
+                  min-width: 100px;
+                  text-align: right;
+                  color: $redcherry;
+                  font-size: 1.5rem;
+               }
+               .fa-heart {
+                  width: 20px;
+                  height: 20px;
+                  margin-left: 0.5rem;
+                  cursor: pointer;
+                  color: $redcherry;
+                  font-size: 1.5rem;
+
+                  &:hover {
+                     animation: animHeart 1s infinite;
+                  }
+               }
+
+               .black {
+                  color: $black;
+               }
             }
          }
       }
+   }
+}
+
+@keyframes animHeart {
+   0% {
+      transform: scale(1);
+   }
+
+   50% {
+      transform: scale(1.15);
+   }
+
+   100% {
+      transform: scale(1);
    }
 }

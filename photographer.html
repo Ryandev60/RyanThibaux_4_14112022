@@ -19,7 +19,7 @@
       <title>Fisheye - photographe</title>
    </head>
    <body>
-      <header>
+      <header class="header-body">
          <a href="/index.html" aria-label="Allez à l'acceuil">
             <img
                src="assets/images/logo.png"
@@ -48,29 +48,33 @@
             <div class="media-card-container" id="mediaCardContainer"></div>
          </section>
       </main>
-      <div id="contact_modal">
-         <div class="modal">
-            <header>
-               <h2>Contactez-moi</h2>
-               <img src="assets/icons/close.svg" onclick="closeModal()" />
-            </header>
-            <form>
-               <div>
-                  <label>Prénom</label>
-                  <input />
-               </div>
-               <button class="contact_button">Envoyer</button>
-            </form>
-         </div>
+      <div id="modalDom" class="modal">
+         <header class="header-form">
+            <h2 id="contactMe">Contactez-moi <br /></h2>
+            <i id="crossModal" class="fa-solid fa-x"></i>
+         </header>
+         <form>
+            <div>
+               <label for="firstName">Prénom</label>
+               <input id="firstName" type="text" />
+               <label for="lastName">Nom</label>
+               <input id="lastName" type="text" />
+               <label for="email">Email</label>
+               <input id="email" type="text" />
+               <label for="message">Votre message</label>
+               <input id="message" type="text" />
+            </div>
+            <button id="sendButton" class="send-form">Envoyer</button>
+         </form>
       </div>
       <div id="lightboxDom" class="lightbox">
          <div class="lightbox--left">
-            <i id="beforeLightbox" class="fa-solid fa-chevron-left"></i>
+            <i id="arrowLeftLightbox" class="fa-solid fa-chevron-left"></i>
          </div>
          <div id="lightboxData" class="lightbox--middle"></div>
          <div class="lightbox--right">
-            <i id="closeLightbox" class="fa-solid fa-x"></i>
-            <i id="nextLightbox" class="fa-solid fa-chevron-right"></i>
+            <i id="crossLightbox" class="fa-solid fa-x"></i>
+            <i id="arrowRightLightbox" class="fa-solid fa-chevron-right"></i>
          </div>
       </div>
       <div id="totalLikesBox" class="total-likes"></div>

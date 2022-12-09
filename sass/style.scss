@@ -1,9 +1,11 @@
+@import "./utils/variable";
 @import "./pages/home/photographer_section";
 @import "./pages/photographer/photograph-header";
 @import "./pages/photographer/photograph-medias";
-@import "./pages/photographer/contact-modal";
 @import "./pages/photographer/total-likes";
 @import "./pages/photographer/lightbox";
+@import "./pages/photographer/modal";
+
 * {
    margin: 0;
    padding: 0;
@@ -16,12 +18,12 @@ body {
    margin: 0;
 }
 
-header {
+.header-body {
    display: flex;
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
-   height: 90px;        
+   height: 90px;
 }
 
 .logo {

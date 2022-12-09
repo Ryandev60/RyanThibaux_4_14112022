@@ -2,7 +2,9 @@ const mediaCard = (selectedMedias, sort) => {
    const src = `assets/photographers/`;
    // Once the dom is loaded,
    // we apply an event listener to the input select
-   let i = 0;
+   let cardCounter = 0;
+   let likeCounter = 0;
+   let heartCounter = 0;
    return selectedMedias
       .sort((a, b) => {
          if (sort === "date") {
@@ -15,7 +17,7 @@ const mediaCard = (selectedMedias, sort) => {
       })
       .map((media) => {
          return `<div class="media-card">
-           <div class="media-card-top card-number-${i++}">
+           <div class="media-card-top card-number-${cardCounter++}">
            ${
               media.image
                  ? `<img src = ${`${src}/${media.photographerId}/${media.image}`} alt="${
@@ -28,9 +30,12 @@ const mediaCard = (selectedMedias, sort) => {
            </div>
            <div class="media-card-bottom">
            <p class="media-card-title">${media.title}</p>
-           <p class="media-card-likes">${
-              media.likes
-           }<i class="fa-solid fa-heart"></i></p>
+           <div class="media-card-bottom-right">
+           <p class="media-card-likes like-number-${likeCounter++}">${
+            media.likes
+         }</p>
+         <i class="fa-solid fa-heart heart heart-number-${heartCounter++}"></i>
+         </div>
            </div>
            </div>`;
       })

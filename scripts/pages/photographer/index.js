@@ -1,7 +1,9 @@
 import header from "./components/header.js";
 import mediaCard from "./components/mediaCard.js";
 import totalLikes from "./components/totalLikes.js";
-import displayLightbox from "../../utils/displayLightbox.js";
+import lightbox from "../../utils/lightbox.js";
+import modal from "../../utils/modal.js";
+import like from "../../utils/like.js";
 
 const params = new URL(document.location).searchParams;
 const selectedPhotographerId = params.get("id");
@@ -43,9 +45,12 @@ function displayData(selectedPhotographer, selectedMedia) {
    totalLikesBox.innerHTML = totalLikes(selectedPhotographer, selectedMedia);
    sortSelect.addEventListener("change", () => {
       mediaCardContainer.innerHTML = mediaCard(selectedMedia, sortSelect.value);
-      displayLightbox(selectedMedia);
+      lightbox(selectedMedia);
+      like();
    });
-   displayLightbox(selectedMedia);
+   lightbox(selectedMedia);
+   modal(selectedPhotographer);
+   like();
 }
 
 async function init() {

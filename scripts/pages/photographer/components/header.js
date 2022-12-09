@@ -11,7 +11,7 @@ const header = (photographerInfo) => {
             </div>
          </div>
          <div class="photograph-header__middle">
-            <button id="contactButton" class="contact_button" onclick="displayModal()">
+            <button id="contactButton" class="contact_button">
                Contactez-moi
             </button>
          </div>

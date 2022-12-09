@@ -7,9 +7,12 @@ const totalLikes = (photographerInfo, photographerMedias) => {
    });
 
    return ` 
-             <p class="sum-of-likes">${sumOfLikes} <i class="fa-solid fa-heart"></i></p>
-             <p class="price">${price}€ / jour</p>
-          `;
+   <div class="total-likes-right">
+             <p id="sumOfLikes" class="sum-of-likes">${sumOfLikes}</p>
+             <i class="fa-solid fa-heart"></i>
+    </div>    
+    <p class="price">${price}€ / jour</p>
+    `;
 };
 
 export default totalLikes;
