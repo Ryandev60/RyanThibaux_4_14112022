@@ -1,6 +1,6 @@
 // Import components
 
-import header from "./components/header.js";
+import banner from "./components/banner.js";
 import mediaCard from "./components/mediaCard.js";
 import totalLikes from "./components/totalLikes.js";
 import lightbox from "./components/lightbox.js";
@@ -43,7 +43,7 @@ const getPhotograperDOM = async () => {
 
 // Display data in DOM
 const displayData = (selectedPhotographer, selectedMedia) => {
-   photographHeader.innerHTML = header(selectedPhotographer);
+   photographBanner.innerHTML = banner(selectedPhotographer);
    mediaCardContainer.innerHTML = mediaCard(selectedMedia, sortSelect.value);
    totalLikesBox.innerHTML = totalLikes(selectedPhotographer, selectedMedia);
    sortSelect.addEventListener("change", () => {

@@ -29,18 +29,19 @@ const mediaCard = (selectedMedias, sort) => {
            media.image
               ? `<img tabindex="0" src=${`${src}/${media.photographerId}/${media.image}`} alt="${
                    media.title
-                }" class="media card-number-${cardCounter++}">`
+                },appuyer sur entrée pour ouvrir ce média dans la lightbox"
+                class="media card-number-${cardCounter++}">`
               : `<video tabindex="0" controls title="${
                    media.title
-                }" class="media card-number-${cardCounter++}">
+                }, appuyer sur entrée pour afficher ce média dans la lightbox" class="media card-number-${cardCounter++}">
            <source src=${`${src}/${media.photographerId}/${media.video}`} type="video/mp4">
         </video>`
         }
      </div>
      <div class="media-card-bottom">
-        <p lang="en-GB" aria-label="${media.title}" tabindex="0" class="media-card-title">${
+        <h2 lang="en-GB" aria-label="${media.title}" tabindex="0" class="media-card-title">${
             media.title
-         }</p>
+         }</h2>
         <div class="media-card-bottom-right">
            <p aria-label="${media.likes} j'aime pour le média ${
             media.title
