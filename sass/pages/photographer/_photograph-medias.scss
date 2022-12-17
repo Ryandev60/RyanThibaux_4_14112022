@@ -51,21 +51,17 @@
          .media-card-bottom {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             width: 350px;
             margin-top: 10px;
 
             .media-card-title {
                font-size: 1.5rem;
                color: $redcherry;
-               margin-top: 4px;
             }
 
             &-right {
                display: flex;
-               align-items: center;
                .media-card-likes {
-                  margin-top: 4px;
                   min-height: 100%;
                   min-width: 100px;
                   text-align: right;
@@ -79,6 +75,10 @@
                   cursor: pointer;
                   color: $redcherry;
                   font-size: 1.5rem;
+                  padding: 5px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
 
                   &:hover {
                      animation: animHeart 1s infinite;

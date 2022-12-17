@@ -1,15 +1,20 @@
+// Import components
+
 import header from "./components/header.js";
 import mediaCard from "./components/mediaCard.js";
 import totalLikes from "./components/totalLikes.js";
-import lightbox from "../../utils/lightbox.js";
-import modal from "../../utils/modal.js";
-import like from "../../utils/like.js";
+import lightbox from "./components/lightbox.js";
+import modal from "./components/modal.js";
+import like from "./components/like.js";
+
+// Get id oh photographer in URL
 
 const params = new URL(document.location).searchParams;
 const selectedPhotographerId = params.get("id");
 
-async function getPhotograperDOM() {
+const getPhotograperDOM = async () => {
    //Data
+
    let selectedPhotographer;
    let selectedMedia = [];
 
@@ -25,9 +30,7 @@ async function getPhotograperDOM() {
 
          // Get media by photographerId
          response.media.forEach((media) => {
-            media.photographerId == selectedPhotographerId
-               ? selectedMedia.push(media)
-               : null;
+            media.photographerId == selectedPhotographerId ? selectedMedia.push(media) : null;
          });
       });
 
@@ -36,10 +39,10 @@ async function getPhotograperDOM() {
       selectedPhotographer,
       selectedMedia,
    };
-}
+};
 
 // Display data in DOM
-function displayData(selectedPhotographer, selectedMedia) {
+const displayData = (selectedPhotographer, selectedMedia) => {
    photographHeader.innerHTML = header(selectedPhotographer);
    mediaCardContainer.innerHTML = mediaCard(selectedMedia, sortSelect.value);
    totalLikesBox.innerHTML = totalLikes(selectedPhotographer, selectedMedia);
@@ -51,12 +54,14 @@ function displayData(selectedPhotographer, selectedMedia) {
    lightbox(selectedMedia);
    modal(selectedPhotographer);
    like();
-}
+};
 
-async function init() {
+// Initialize all functions
+
+const init = async () => {
    // Récupère les datas des photographes
    const { selectedPhotographer, selectedMedia } = await getPhotograperDOM();
    displayData(selectedPhotographer, selectedMedia);
-}
+};
 
 init();

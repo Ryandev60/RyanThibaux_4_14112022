@@ -1,7 +1,10 @@
+// Import components
+
 import photographerCard from "./components/photographerCard.js";
 
-async function getPhotographers() {
-   // Penser à remplacer par les données récupérées dans le json
+// Get data
+
+const getPhotographers = async () => {
    let photographers = [];
 
    await fetch("../../data/photographers.json")
@@ -10,24 +13,26 @@ async function getPhotographers() {
          photographers = response.photographers;
          console.log(photographers);
       });
-   // et bien retourner le tableau photographers seulement une fois
    return {
       photographers,
    };
-}
+};
 
-async function displayData(photographers) {
+// Display data
+
+const displayData = (photographers) => {
    const photographersSection = document.querySelector(".photographer_section");
    console.log(photographersSection);
    photographers.forEach((photographer) => {
       photographersSection.innerHTML += photographerCard(photographer);
    });
-}
+};
 
-async function init() {
-   // Récupère les datas des photographes
+// Initialize all functions
+
+const init = async () => {
    const { photographers } = await getPhotographers();
    displayData(photographers);
-}
+};
 
 init();

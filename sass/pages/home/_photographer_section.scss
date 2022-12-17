@@ -33,7 +33,7 @@
    }
 
    .name {
-      color: #d3573c;
+      color: $orange;
       font-size: 36px;
       margin: 20px 0 5px 0;
       font-weight: 100;
@@ -41,7 +41,7 @@
    }
 
    .location {
-      color: #d3573c;
+      color: $orange;
       margin: 0 0 5px 0;
       text-align: center;
    }
@@ -54,6 +54,6 @@
 
    .day-price {
       margin: 0;
-      color: #8a8a8a;
+      color: $grey;
    }
 }

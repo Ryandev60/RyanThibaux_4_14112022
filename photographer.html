@@ -5,10 +5,7 @@
 
       <meta charset="utf-8" />
       <link rel="icon" type="image/png" href="assets/favicon.png" />
-      <link
-         href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-         rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
       <link
          rel="stylesheet"
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -20,66 +17,77 @@
    </head>
    <body>
       <header class="header-body">
-         <a href="/index.html" aria-label="Allez à l'acceuil">
-            <img
-               src="assets/images/logo.png"
-               class="logo"
-               alt="Logo de Fisheye"
-            />
+         <a href="/index.html" aria-label="Allez à l'acceuil" tabindex="0">
+            <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye" />
          </a>
       </header>
-      <main id="main">
-         <section id="photographHeader" class="photograph-header"></section>
+      <main id="main" aria-hidden="false">
+         <section role="banner" id="photographHeader" class="photograph-header"></section>
          <section class="photograph-medias">
             <div class="sort-select-container">
-               <label class="sort-select-label" for="sortSelect"
-                  >Trier par</label
-               >
-               <select id="sortSelect" class="sort-select" name="test">
-                  <option value="popularity" class="sort-select-option">
-                     Popularité
-                  </option>
+               <label class="sort-select-label" for="sortSelect">Trier par</label>
+               <select id="sortSelect" class="sort-select">
+                  <option value="popularity" class="sort-select-option">Popularité</option>
                   <option value="date" class="sort-select-option">Date</option>
-                  <option value="title" class="sort-select-option">
-                     Titre
-                  </option>
+                  <option value="title" class="sort-select-option">Titre</option>
                </select>
             </div>
             <div class="media-card-container" id="mediaCardContainer"></div>
          </section>
+         <aside id="totalLikesBox" class="total-likes"></aside>
       </main>
-      <div id="modalDom" class="modal">
+      <div
+         id="modalDom"
+         class="modal"
+         role="dialog"
+         aria-hidden="true"
+         aria-label="Formulaire pour contacter le photographe"
+      >
          <header class="header-form">
-            <h2 tabindex="0" id="contactMe">Contactez-moi <br /></h2>
-            <i id="crossModal" class="fa-solid fa-x"></i>
+            <p class="contact-me" tabindex="0" id="contactMe">Contactez-moi <br /></p>
+            <i
+               aria-label="Fermer le formulaire"
+               id="crossModal"
+               class="fa-solid fa-x"
+               tabindex="0"
+            ></i>
          </header>
-         <form>
-            <div>
+         <form method="post">
+            <fieldset>
+               <legend tabindex="0">Vos coordonnées</legend>
                <label for="firstName">Prénom</label>
-               <input id="firstName" type="text" />
+               <input placeholder="David" required id="firstName" type="text" />
                <label for="lastName">Nom</label>
-               <input id="lastName" type="text" />
+               <input placeholder="Dupont" required id="lastName" type="text" />
                <label for="email">Email</label>
-               <input id="email" type="text" />
+               <input placeholder="daviddupont@mail.com" required id="email" type="text" />
+            </fieldset>
+            <fieldset>
+               <legend tabindex="0">Votre demande</legend>
                <label for="message">Votre message</label>
-               <input id="message" type="text" />
-            </div>
-            <button type="submit" id="sendButton" class="send-form">
-               Envoyer
-            </button>
+               <textarea
+                  placeholder="Je souhaite vous contactez afin d'obtenir vos services le 17 janvier pour des photos de mariages"
+                  required
+                  id="message"
+                  type="text"
+                  rows="4"
+                  cols="5"
+               ></textarea>
+            </fieldset>
+
+            <button type="submit" id="sendButton" class="send-form">Envoyer</button>
          </form>
       </div>
-      <div id="lightboxDom" class="lightbox">
+      <article id="lightboxDom" class="lightbox">
          <div class="lightbox--left">
-            <i id="arrowLeftLightbox" class="fa-solid fa-chevron-left"></i>
+            <i tabindex="0" id="arrowLeftLightbox" class="fa-solid fa-chevron-left"></i>
          </div>
          <div id="lightboxData" class="lightbox--middle"></div>
          <div class="lightbox--right">
-            <i id="crossLightbox" class="fa-solid fa-x"></i>
-            <i id="arrowRightLightbox" class="fa-solid fa-chevron-right"></i>
+            <i tabindex="0" id="crossLightbox" class="fa-solid fa-x"></i>
+            <i tabindex="0" id="arrowRightLightbox" class="fa-solid fa-chevron-right"></i>
          </div>
-      </div>
-      <div id="totalLikesBox" class="total-likes"></div>
+      </article>
       <script src="/scripts/pages/photographer/index.js" type="module"></script>
    </body>
 </html>
